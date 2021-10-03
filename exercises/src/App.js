@@ -8,20 +8,25 @@ let name = "Damian";
 const city = "Wrolove";
 
 class App extends Component {
-  messeage = (cash) => `Użytkownik ${name} z miasta ${city} zarabia ${cash}zł`
+  constructor(props){
+    super(props)
+    this.state ={
+      city: "Wroclaw"
+    }
+  }
+  changeCity = () => {
+    this.setState({ city: this.state.city === "Wroclaw" ? "Opole" : "Wroclaw"})
+  }
+
   render(){
-    return (
-      <div className="text-center">
-          <h4 className="bg-primary text-white text-center p-3">
-            {this.messeage(3000)}
-          </h4>
-          <img src={reactLogo} alt="logo" />
-      </div>
+    return(
+      <>
+        <Display value={this.state.city} callback={this.changeCity}></Display>
+      </>
     )
-  } 
-   
-  
+  }
 }
+
  
 export default App;
 
